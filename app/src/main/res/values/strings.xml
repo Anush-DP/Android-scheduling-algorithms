@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CPU SA Visual</string>
+    <string name="no_of_proc">Number of processes</string>
+    <string name="edit_text_no_of_proc">Enter a number</string>
+    <string name="select_algo">Select Algorithm</string>
+    <string-array name="algo_array">
+        <item>FCFS</item>
+        <item>SJF</item>
+        <item>Round Robin</item>
+    </string-array>
+</resources>
