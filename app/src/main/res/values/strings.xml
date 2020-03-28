@@ -3,9 +3,15 @@
     <string name="no_of_proc">Number of processes</string>
     <string name="edit_text_no_of_proc">Enter a number</string>
     <string name="select_algo">Select Algorithm</string>
+    <string name="visualize_button_name">Visualize</string>
     <string-array name="algo_array">
         <item>FCFS</item>
         <item>SJF</item>
         <item>Round Robin</item>
     </string-array>
+
+    <string name="title_activity_visualize_fcfs">VisualizeFCFSActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="action_settings">Settings</string>
 </resources>
