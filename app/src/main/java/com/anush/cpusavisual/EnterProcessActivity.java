@@ -17,22 +17,24 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+
 import com.anush.cpusavisual.visualize.VisualizeFCFSActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class EnterProcessActivity extends AppCompatActivity {
 
-    public List<Process> processList;
+    public static List<Process> processList;
     List<TextView> processNameList;
     public static final String processName="P";
     public static final String ONE="1";
+    public static final String EXTRA_PROCESS_LIST = "com";
     Integer numberOfProcesses;
     List<EditText> processArrivalTime,processBurstTime;
     Button visualizeButton;
-    public static final String EXTRA_PROCESSES="com.anush.cpusavisual.EXTRA_PROCESSES";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +64,7 @@ public class EnterProcessActivity extends AppCompatActivity {
                 boolean inputErrorFlag=false;
                 for(EditText et: processBurstTime)
                 {
-                    if(et.getText().toString().charAt(0)=='0' ||  et.length()==0 )
+                    if(et.getText().toString().isEmpty() || et.getText().toString().charAt(0)=='0')
                     {
                         et.setError("Enter valid burst time");
                         inputErrorFlag=true;
@@ -83,14 +85,19 @@ public class EnterProcessActivity extends AppCompatActivity {
         {
             processList.get(i).setArrivalTime(Integer.parseInt(processArrivalTime.get(i).getText().toString()));
             processList.get(i).setBurstTime(Integer.parseInt(processBurstTime.get(i).getText().toString()));
+            processList.get(i).setProcessName(processNameList.get(i).getText().toString());
         }
+        Collections.sort(processList, new Comparator<Process>() {
+
+            public int compare(Process p1, Process p2) {
+                return p1.getArrivalTime().compareTo(p2.getArrivalTime());
+            }
+        });
     }
     private void openVisualizeActivity() {
         Intent intent = new Intent(this, VisualizeFCFSActivity.class);
         startActivity(intent);
     }
-
-
 
     public void createInputForm(){
         TableLayout stk = findViewById(R.id.table_main);
@@ -105,7 +112,7 @@ public class EnterProcessActivity extends AppCompatActivity {
         tbrow0.addView(tv1);
         TextView tv2 = new TextView(this);
         tv2.setTypeface(null,Typeface.BOLD);
-        tv2.setText("  Burst Time(ms)");
+        tv2.setText("  Burst Time(ms)  ");
         tbrow0.addView(tv2);
         stk.addView(tbrow0);
         for (int i = 0; i < numberOfProcesses; i++) {
@@ -116,35 +123,4 @@ public class EnterProcessActivity extends AppCompatActivity {
             stk.addView(tbrow);
         }
     }
-
-
-    public class MyView extends View
-    {
-        Paint paint = null;
-        int n;
-        public MyView(Context context,int n)
-        {
-            super(context);
-            paint = new Paint();
-            this.n=n;
-        }
-
-        @Override
-        protected void onDraw(Canvas canvas)
-        {
-            super.onDraw(canvas);
-            int x = getWidth();
-            int y = getHeight();
-            int radius;
-            radius = n;
-            paint.setStyle(Paint.Style.FILL);
-            paint.setColor(Color.WHITE);
-            canvas.drawPaint(paint);
-            // Use Color.parseColor to define HTML colors
-            paint.setColor(Color.parseColor("#CD5C5C"));
-            //canvas.drawCircle(x / 2, y / 2, radius, paint);
-            canvas.drawRect(x-x/3,y-y/3,x-x/2,y-y/2,paint);
-        }
-    }
-
 }

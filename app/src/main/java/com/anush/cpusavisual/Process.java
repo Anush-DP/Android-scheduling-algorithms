@@ -4,9 +4,10 @@ public class Process {
 
     private Integer arrivalTime;
     private Integer burstTime;
-    private Integer waitTime;
-    private Integer turnAroundTime;
-    private Integer responseTime;
+    private Integer waitTime = 0;
+    private Integer turnAroundTime = 0;
+    private Integer responseTime = 0;
+    private String processName;
 
     public Process()
     {
@@ -63,4 +64,11 @@ public class Process {
         this.burstTime = burstTime;
     }
 
+    public String getProcessName() {
+        return processName;
+    }
+
+    public void setProcessName(String processName) {
+        this.processName = processName;
+    }
 }

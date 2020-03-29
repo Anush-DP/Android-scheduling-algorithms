@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".visualize.VisualizeFCFSActivity"
-            android:label="@string/title_activity_visualize_fcfs"
-            android:parentActivityName=".MainActivity">
-        </activity>
+        <activity android:name=".visualize.VisualizeFCFSActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/FullscreenTheme"
+            android:screenOrientation="landscape"
+            ></activity>
         <activity
             android:name=".EnterProcessActivity"
             android:parentActivityName=".MainActivity" />
