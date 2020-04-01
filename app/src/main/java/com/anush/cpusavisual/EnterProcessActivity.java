@@ -96,6 +96,7 @@ public class EnterProcessActivity extends AppCompatActivity {
     }
     private void openVisualizeActivity() {
         Intent intent = new Intent(this, VisualizeFCFSActivity.class);
+        intent.putExtra(EXTRA_PROCESS_LIST,numberOfProcesses);
         startActivity(intent);
     }
 

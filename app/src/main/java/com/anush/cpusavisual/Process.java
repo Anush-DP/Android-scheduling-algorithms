@@ -14,7 +14,7 @@ public class Process {
         this(1,1);
     }
 
-    private Process(int arrivalTime, int burstTime)
+    public Process(int arrivalTime, int burstTime)
     {
         this.arrivalTime = arrivalTime;
         this.burstTime = burstTime;

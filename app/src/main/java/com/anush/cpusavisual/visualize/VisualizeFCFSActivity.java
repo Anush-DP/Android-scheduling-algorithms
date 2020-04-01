@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.anush.cpusavisual.EnterProcessActivity;
 import com.anush.cpusavisual.Process;
 import com.anush.cpusavisual.R;
+import com.anush.cpusavisual.SchedulingAlgorithms;
 
 import java.util.List;
 
@@ -20,15 +21,23 @@ public class VisualizeFCFSActivity extends AppCompatActivity {
 
 
     final int textSize=16;
+    public static List<Process> chartProcesses;
+    int n;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_visualize_fcfs);
-
+        n=getIntent().getIntExtra(EnterProcessActivity.EXTRA_PROCESS_LIST,1);
         for(Process p : EnterProcessActivity.processList)
         {
-            Log.i(p.getProcessName(),"AT: "+p.getArrivalTime()+" BT: "+p.getBurstTime().toString());
+            Log.i("Proc list "+p.getProcessName(),"AT: "+p.getArrivalTime()+" BT: "+p.getBurstTime().toString());
         }
+        SchedulingAlgorithms s=new SchedulingAlgorithms();
+        chartProcesses= s.FCFS(n);
+        for(Process p : chartProcesses)
+        {
+            Log.i("Gantt "+p.getProcessName(),"AT: "+p.getArrivalTime()+" BT: "+p.getBurstTime().toString());
+        }
+        setContentView(R.layout.activity_visualize_fcfs);
         createInputForm();
     }
 
