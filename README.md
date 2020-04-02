@@ -8,3 +8,6 @@
 
 ## VisualizeActivity
 <img src="https://i.imgur.com/d6oYkvf.png" width="640" height="400">
+
+## Download
+![Beta-release-apk](https://github.com/Anush-DP/Android-scheduling-algorithms/releases/download/0.2/CPU-SA-Visual-release.apk)
